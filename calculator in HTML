@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <style>
+        body {
+            margin: 0;
+            display: grid;
+            place-items: center;
+            height: 100vh;
+            background: #1f2937;
+            font-family: Arial, sans-serif;
+        }
+
+        .calculator {
+            width: 320px;
+            background: #111827;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .calculator__display {
+            min-height: 80px;
+            padding: 20px;
+            background: #000;
+            color: #fff;
+            font-size: 2rem;
+            text-align: right;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .calculator__keys {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: #374151;
+        }
+
+        button {
+            border: none;
+            padding: 22px 10px;
+            font-size: 1.4rem;
+            cursor: pointer;
+            background: #e5e7eb;
+            color: #111827;
+        }
+
+        .key--operator {
+            background: #f59e0b;
+            color: #fff;
+        }
+
+        .keys--equal {
+            background: #10b981;
+            color: #fff;
+            grid-column: span 4;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="calculator__display">0</div>
+        <div class="calculator__keys">
+            <button class="key--operator" data-action="add">+</button>
+            <button class="key--operator" data-action="subtract">-</button>
+            <button class="key--operator" data-action="multiply">*</button>
+            <button class="key--operator" data-action="divide">/</button>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button data-action="decimal">.</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button data-action="clear">AC</button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button class="keys--equal" data-action="calculate">=</button>
+            <button>0</button>
+        </div>
+    </div>
+
+    <script>
+        const calculator = document.querySelector('.calculator');
+        const display = document.querySelector('.calculator__display');
+        const keys = calculator.querySelector('.calculator__keys');
+
+        keys.addEventListener('click', e => {
+            if (!e.target.matches('button')) {
+                return;
+            }
+        })
+            const key = e.target;
+            const action = key.dataset.action;
+            const keyContent = key.textContent;
+            const displayedNum = display.textContent;
+
+            if (!action) {
+                if (displayedNum === '0') {
+                    display.textContent = keyContent;
+                } else {
+                    display.textContent = displayedNum + keyContent;
+                }
+            }
+
+            if (action === 'decimal') {
+                if (!displayedNum.includes('.')) {
+                    display.textContent = displayedNum + '.';
+                }
+            }
+
+            if (action === 'clear') {
+                display.textContent = '0';
+            }
+
+            if (
+                action === 'add' ||
+                action === 'subtract' ||
+                action === 'multiply' ||
+                action === 'divide'
+            ) {
+                console.log('operator key');
+            }
+
+            if (action === 'calculate') {
+                console.log('equal key');
+            }
+            if (
+             action === 'add' ||
+             action === 'subtract' ||
+             action === 'multiply' ||
+             action === 'divide' 
+            ) {
+                key.classList.add('is-depressed')
+            }
+            keys.addEventListener('click', e=> {
+                if (!e.target.matches('button')) {
+                    const key = e.target;
+                    // for my future self as i don't understand this remove the is-depressed from all keys
+                    Array.from(key.parentNode.children)
+                    .forEach(k => k.classList.remove('is-depressed'))
+                }
+            })
+            const calculator = document.querySelector('.calculator')
+            //....
+            keys.addEventListener('click', e => {
+                if (e.target.matches('button')) {
+                    if (
+                        action === 'add' ||
+                        action === 'subtract' ||
+                        action === 'multiply' ||
+                        action === 'divide' 
+                    ) {
+                        key.classList.add('is-depressed')
+                        // for my future self add attribute
+                        calculator.dataset.previousKeyType = 'operator'
+
+                    }
+                }
+            })
+            const previousKeyType = calculator.dataset.previousKeyType
+    if (!action) {
+        if(displayedNum === '0' || previousKeyType)
+        display.textContent = keyContent
+    } else {
+        display.textContent = displayedNum +keyContent
+    }
+    if (action === 'calculate') {
+        const secondValue = displayedNum
+        // i don't know what to write
+    }
+    if (
+        action === 'add' ||
+        action === 'substract' ||
+        action === 'multiply' ||
+        action === 'divide'
+    ) {
+        // dunno
+        calculator.dataset.firstValue = displayedNum
+        calculator.dataset.operator = action
+    }
+    if (action === 'calculate') {
+        const firstValue =calculator.dataset.fistValue
+        const operator = calculator.dataset.operator
+        const secondValue = displayedNum
+        display.textContent = calculate(firstValue, operator, secondValue)
+    }
+    const calculated = (a, operator, b) => {
+        //perform calculation return calculated
+    }
+    const calculate = (a, operator, b) => {
+        let result = ''
+        if (operator == 'add') {
+            result = parseFloat(a) + parseFloat(b)
+        } else if (operator === 'substract') {
+            result = parseFloat(a) - parseFloat(b)
+        } else if ( operator === 'multiply') {
+            result = parseFloat(a) * parseFloat(b)
+        } else if ( operator === 'divide') {
+            result = parseFloat(a) / parseFloat(b)
+        }
+        return result
+    }
+    const calculate = (a, operator, b) => {
+        if (operator === 'add') {
+            result = parseFloat(a) + parseFloat(b)
+        } else if (operator === 'substract') {
+            result = parseFloat(a) - parseFloat(b)
+        } else if (operator === 'multiply') {
+            result = parseFloat(a) * parseFloat(b)
+        } else if (operator === 'divide') {
+            result = parseFloat(a) / parseFloat(b)
+        } 
+    }
+    const calculate = (a, operator, b) => {
+        if (operator === 'add') {
+            return firstNum + parseFLoat(b)
+        }
+        if (operator === 'subtract') {
+            return parseFloat(a) - parseFloat(b)
+        }
+        if ( operator === 'multiply') {
+            return parseFloat(a) * parseFloat(b)
+        }
+        if (operator === 'divide') {
+            return parseFloat(a) / parseFloat(b)
+        }
+        const calculate
+    }
+    //example of how include work
+    const string = '.'
+    const hasExclamation = string.includes('.')
+    console.log(hasExclamation)
+    // do nothing if string has a dot
+    if (!displayedNum.includes('.')) {
+        display.textContent = displayedNum + '.'
+    }
+    if (action === 'decimal') {
+        if (!displayedNum.includes('.')) {
+            display.textContent = displayedNum + '.'
+        } else if (previousKeyType === 'operator') {
+            display.textContent = '0.'
+        }
+        calculator.dataset.previousKeyType = 'decimal'
+        // I should make css code to ensure that operator properly work 
+    }
+    // if first multiple operater key is pressed simultanously the first one is released and second is depressed work
+    // the update feature
+    if (
+        action === 'add' ||
+        action === 'subtrsct' ||
+        action === 'multiply' ||
+        action === 'divide' 
+    ) {
+        const firstValue = calculator.dataset.firstValue
+        const operator = calculator.dataset.operator
+        const secondValue = displayedNum
+        if (firstValue && operator) {
+            display.textContent = calculate(firstValue, operator, secondValue)
+        }
+        key.classList.add('is-depressed')
+        calculator.dataset.previousKeyType = 'operator'
+        calculator.dataset.firstValue = displayedNum
+        calculator.dataset.operator = action
+    }
+    </script>
+</body>
+</html>
