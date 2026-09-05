@@ -269,6 +269,82 @@
         calculator.dataset.firstValue = displayedNum
         calculator.dataset.operator = action
     }
+    if (action === 'calculate') {
+        const firstValue = calculator.dataset.firstValue
+        const operator = calculator.dataset.operator
+        const seconValue = displayedNum
+        if (firstValue) {
+            display.textContent = calculate(firstValue, operator, secondValue)
+        }
+
+        calculator.dataset.previousKeyType = 'calculate'
+    }
+    if (action === 'calculate') {
+        let firstValue = calculator.dataset.firstValue
+        const operator = calcualtor.dataset.operator
+        const secondValue = displayedNum
+        if (firstValue) {
+            if (previousKeyType === 'calculate') {
+                firstValue = displayedNum
+            } 
+            display.textContent = calculate(firstValue, operator, secondValue)
+
+        }
+        calculator.dataset.previousKeyType = 'calculate'
+    }
+    if (action === 'calculate') {
+        let firstValue = calculator.dataset.firstValue
+        const operator = calculator.dataset.operator
+        const secondValue = displayedNum
+        if (firstValue) {
+            if (previousKeyType === 'calculate') {
+                firstValue = displayedNum
+                
+            }
+            display.textContent = calculate(firstValue, operator, secondValue)
+    }
+    calculator.dataset.modValue = secondValue
+    calculator.dataset.previousKeyType = 'calculate'
+}
+if (firstValue) {
+    if (previousKeyType === 'calculate') {
+        firstValue = displayedNum
+        secondValue = calculatr.dataset.modValue
+    }
+    display.textContent = calculate(firstValue, operator, secondValue)
+}
+if (!action) {
+    if (
+    displayedNum = '0' ||
+    previousKeyTYpe === 'operator' ||
+    previousKeyType === 'calculate' 
+    ) {
+display.textContent = keyContent
+ } else {
+    display.textContent = displayedNum + keyContent
+ } 
+calculator.dataset.previousKeyType = 'decimal'
+}
+if (action === 'calculate') {
+    let firstValue = calculator.dataset.firstValue
+    const operator = calculator.dataset.operator
+    const secondValue = displayedNum
+    if (firstvalue) {
+        if(previousKeyType === 'calculate') {
+            firstvalue = displayedNum
+        }
+        display.textContent = calculate(firstValue, operator, secondValue)
+    }
+    calculator.dataset.modValue = aecondValue
+    calculator.dataset.previousKeyType = 'calculate'
+}
+if (firstValue) {
+    if (previousKeyType === 'calculate') {
+        firstValue = displayedNum
+        secondValue = calculator.dataset.modValue
+    }
+    display.textContent = calculate(firstvalue, operator,secondValue)
+}
     </script>
 </body>
 </html>
