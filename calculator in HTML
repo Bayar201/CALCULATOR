@@ -80,7 +80,7 @@
         .key--equal {
             background: #10b981;
             color: #fff;
-            grid-column: span 2;
+            grid-column: span 1;
         }
 
         .key--zero {
