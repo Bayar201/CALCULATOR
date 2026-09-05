@@ -176,12 +176,7 @@
                 return;
             }
 
-            if (
-                action === 'add' ||
-                action === 'subtract' ||
-                action === 'multiply' ||
-                action === 'divide'
-            ) {
+            if (action === 'add' || action === 'subtract' || action === 'multiply' || action === 'divide') {
                 if (firstValue && operator && previousKeyType !== 'operator' && previousKeyType !== 'calculate') {
                     const result = calculate(firstValue, operator, displayedNum);
                     display.textContent = result;

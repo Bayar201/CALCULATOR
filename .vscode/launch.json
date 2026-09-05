@@ -6,6 +6,14 @@
     "configurations": [
         
         {
+            "name": "Launch Edge",
+            "request": "launch",
+            "type": "msedge",
+            "url": "http://localhost:8080",
+            "webRoot": "${workspaceFolder}"
+        },
+        
+        {
             "name": ".NET Core Launch (web)",
             "type": "coreclr",
             "request": "launch",
@@ -29,7 +37,7 @@
             "type": "editor-browser",
             "request": "launch",
             "name": "Open calculator in HTML",
-            "url": "file:///C:/Users/Chaak/source/repos/Game/CALCULATOR/calculator%20in%20HTML"
+            "url": "file:///C:/Users/Chaak/source/repos/Game/CALCULATOR/calculator.html"
         }
     ]
 }
